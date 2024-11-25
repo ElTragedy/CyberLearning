@@ -1,0 +1,113 @@
+{
+  "module": {
+    "id": "linux_basics_01",
+    "title": "Linux Basic Commands and Navigation",
+    "description": "This module teaches foundational Linux commands for navigation, account management, and system information.",
+    "difficulty": "Beginner",
+    "prerequisites": [],
+    "learning_outcomes": [
+      "Navigate a Linux file system",
+      "Change passwords and delete accounts",
+      "Identify active users",
+      "Identify running services"
+    ],
+    "tasks": [
+      {
+        "task_id": "navigate_file_system",
+        "title": "Navigating the File System",
+        "description": "Learn to move between directories, list files, and check current directory.",
+        "instructions": [
+          "Use `cd` to move between directories.",
+          "Use `ls` to list files in a directory.",
+          "Use `pwd` to show the current directory path."
+        ],
+        "expected_outcome": "User can navigate to specified directories and display the contents of directories.",
+        "validation": {
+          "type": "command_output",
+          "commands": [
+            "cd /home",
+            "ls /etc",
+            "pwd"
+          ],
+          "expected_result": [
+            "/home",
+            "[list of files in /etc]",
+            "/current/directory/path"
+          ]
+        },
+        "feedback": "Remember to use `ls -a` to see hidden files, and `cd ..` to move up a directory.",
+        "points": 10
+      },
+      {
+        "task_id": "change_password",
+        "title": "Changing Passwords",
+        "description": "Learn to change user passwords securely.",
+        "instructions": [
+          "Use the `passwd` command to change the password for a user account."
+        ],
+        "expected_outcome": "User successfully changes the password for the specified account.",
+        "validation": {
+          "type": "system_state",
+          "check": "password_changed",
+          "user": "target_user"
+        },
+        "feedback": "Ensure that the new password meets security criteria set by the system.",
+        "points": 15
+      },
+      {
+        "task_id": "delete_account",
+        "title": "Deleting User Accounts",
+        "description": "Learn how to delete a user account securely.",
+        "instructions": [
+          "Use the `userdel` command to delete a user account."
+        ],
+        "expected_outcome": "User can delete specified accounts safely.",
+        "validation": {
+          "type": "system_state",
+          "check": "user_deleted",
+          "user": "target_user"
+        },
+        "feedback": "Confirm that all user data is removed before deleting.",
+        "points": 20
+      },
+      {
+        "task_id": "check_logged_in_users",
+        "title": "Check Logged In Users",
+        "description": "Learn to check who is currently logged into the system.",
+        "instructions": [
+          "Use the `who` or `w` command to view active sessions."
+        ],
+        "expected_outcome": "User can view all active user sessions on the system.",
+        "validation": {
+          "type": "command_output",
+          "commands": [
+            "who",
+            "w"
+          ],
+          "expected_result": "[list of active users]"
+        },
+        "feedback": "Consider using `last` to check previous logins for audit purposes.",
+        "points": 10
+      },
+      {
+        "task_id": "check_running_services",
+        "title": "Identify Running Services",
+        "description": "Learn to list and check running services on the system.",
+        "instructions": [
+          "Use `ps`, `top`, or `systemctl` to identify active services and processes."
+        ],
+        "expected_outcome": "User can identify running processes and services.",
+        "validation": {
+          "type": "command_output",
+          "commands": [
+            "ps aux",
+            "systemctl status"
+          ],
+          "expected_result": "[list of running services and processes]"
+        },
+        "feedback": "Use `systemctl | grep running` to filter active services.",
+        "points": 15
+      }
+    ]
+  }
+}
