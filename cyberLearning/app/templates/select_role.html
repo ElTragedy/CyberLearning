@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Select Role - CyberLearning{% endblock %}
+
+{% block content %}
+<h1>Select Your Role</h1>
+<button onclick="window.location.href='{% url 'set_role' 'student' %}'">Student View</button>
+<button onclick="window.location.href='{% url 'set_role' 'teacher' %}'">Teacher View</button>
+<button onclick="window.location.href='{% url 'set_role' 'admin' %}'">Admin View</button>
+{% endblock %}

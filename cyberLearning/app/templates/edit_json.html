@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Edit JSON - CyberLearning{% endblock %}
+
+{% block content %}
+<h1>Edit Module JSON</h1>
+<form method="post">
+    {% csrf_token %}
+    <textarea name="json_content" rows="20" cols="80">{{ json_content }}</textarea><br>
+    <button type="submit">Save Changes</button>
+</form>
+{% endblock %}

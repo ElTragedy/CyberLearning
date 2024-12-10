@@ -1,30 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ module.title }}</title>
-</head>
-<body>
-    <button onclick="window.location.href='{% url 'home' %}'">Home</button>
-    <h1>{{ module.title }}</h1>
-    <p><strong>Description:</strong> {{ module.description }}</p>
-    <p><strong>Difficulty:</strong> {{ module.difficulty }}</p>
-    
-    <h2>Learning Outcomes:</h2>
-    <ul>
-        {% for outcome in module.learning_outcomes %}
-        <li>{{ outcome }}</li>
-        {% endfor %}
-    </ul>
+{% extends "base.html" %}
 
-    <h2>Tasks</h2>
-    <ul>
-        {% for task in module.tasks %}
-        <li>
-            <h3>{{ task.title }}</h3>
-            <p>{{ task.description }}</p>
-            <strong>Points:</strong> {{ task.points }}
-        </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% block title %}{{ module.title }} - CyberLearning{% endblock %}
+
+{% block content %}
+<button onclick="window.location.href='{% url 'edit_json' %}'">Edit Module</button>
+<h1>{{ module.title }}</h1>
+<p><strong>Description:</strong> {{ module.description }}</p>
+<p><strong>Difficulty:</strong> {{ module.difficulty }}</p>
+
+<h2>Learning Outcomes:</h2>
+<ul>
+    {% for outcome in module.learning_outcomes %}
+    <li>{{ outcome }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Tasks</h2>
+<ul>
+    {% for task in module.tasks %}
+    <li>
+        <h3>{{ task.title }}</h3>
+        <p>{{ task.description }}</p>
+        <strong>Points:</strong> {{ task.points }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'cyberLearning.urls'
 
 TEMPLATES = [
@@ -76,26 +77,25 @@ WSGI_APPLICATION = 'cyberLearning.wsgi.application'
 
 import os
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'default_db'),
-        'USER': os.getenv('DB_USER', 'default_user'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'default_password'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '5432'),
+        'NAME': 'djangodb',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',  # Use 'postgres-django' if running Django inside Docker
+        'PORT': '5432',
     }
 }
-
 """
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-"""
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -137,3 +137,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Session settings
+SESSION_ENGINE = "django.contrib.sessions.backends.db"  # Use database-backed sessions
+SESSION_COOKIE_AGE = 1209600  # Two weeks (in seconds)
+SESSION_SAVE_EVERY_REQUEST = True  # Save the session on every request
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Keep the session alive after closing the browser
